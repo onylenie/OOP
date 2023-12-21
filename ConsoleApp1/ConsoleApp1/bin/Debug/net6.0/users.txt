@@ -3,3 +3,5 @@ admin:admin:2
 newUser:password:1
 user2:password:1
 login:password:1
+newAccount:password:1
+nickName:password:1

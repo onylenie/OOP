@@ -9,8 +9,10 @@ Text, Date
 Новая строка афиши, Новая дата афиши
 Какой-то текст, Какая-то дата
 NewText, NewDate
-New, Date
+Тайный квест, Завтра
 NewText, NewDate
 NotNullText, NotNullDate
-text, date
+Новый текст, Новая дата
 texttext, datedate
+Какое-то мероприятие, Какая-то дата мероприятия
+Концерт Артиста, Каждые выходные

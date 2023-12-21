@@ -26,6 +26,7 @@ namespace ConsoleApp1
         }
     }
 
+    
     public class Poster
     {
         private const string PosterFile = "data.txt";

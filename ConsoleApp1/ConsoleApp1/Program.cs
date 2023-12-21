@@ -10,7 +10,7 @@ namespace PosterApp
     class Program
     {
         // Файлы, принимающие участие в программе
-        public  const string Users = "users.txt";
+        public const string Users = "users.txt";
         public const string PosterFile = "data.txt";
         public const string Tickets = "tickets.txt";
 
@@ -23,7 +23,7 @@ namespace PosterApp
                 string choose = Console.ReadLine();
                 if (choose.Equals("3"))
                 {
-                Poster poster = new Poster();
+                    Poster poster = new Poster();
                 }
                 else if (choose.Equals("1"))
                 {
@@ -32,7 +32,7 @@ namespace PosterApp
                     Console.WriteLine("Введите пароль:");
                     string password = Console.ReadLine();
 
-                    User user = new User(login, password);                    
+                    User user = new User(login, password);
 
                     if (user.Type == 1) // Если тип пользователя ==1 -> открывается афиша
                     {
@@ -42,7 +42,7 @@ namespace PosterApp
                         {
                             Poster poster = new Poster();
 
-                            Console.WriteLine("Введите номер интересующей вас афишы, чтобы купить билет или введите '0' чтобы выйти из аккаунта:");
+                            Console.WriteLine("Введите номер интересующей вас афиши, чтобы купить билет или введите '0' чтобы выйти из аккаунта:");
                             input = Console.ReadLine();
 
                             if (!input.Equals("0") && int.TryParse(input, out int itemNumber) && itemNumber >= 1)
@@ -90,7 +90,7 @@ namespace PosterApp
 
                                     addPoster = new AddPoster(text, date, user.Name);
                                 else Console.WriteLine("Вы не ввели текст афиши или дату!");
-     
+
                             }
                             else if (help == 2) // Изменение
                             {
@@ -111,8 +111,6 @@ namespace PosterApp
                                     try
                                     {
                                         ChangePoster changePoster = new ChangePoster(text, date, user.Name, int.Parse(num));
-
-                                        Poster poster1 = new Poster();
                                     }
                                     catch
                                     {
@@ -137,7 +135,7 @@ namespace PosterApp
                     }
                 }
                 else if (choose.Equals("2"))
-                {                        
+                {
                     Registration registration = new Registration();
 
                     while (true)
@@ -155,7 +153,7 @@ namespace PosterApp
                             Console.Write("Повторите пароль: ");
                             string password2 = Console.ReadLine();
 
-                            if (password.Equals(password2) && !password.Trim().Equals(""))
+                            if (password.Equals(password2) && !password.Trim().Equals("") && !password2.Trim().Equals(""))
                             {
                                 if (registration.AddNewUser(login, password))
                                 {

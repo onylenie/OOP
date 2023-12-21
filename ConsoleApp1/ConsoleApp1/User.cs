@@ -9,10 +9,10 @@ namespace ConsoleApp1
 {
     internal class User
     {
-        public const string Users = "users.txt";
+        private const string Users = "users.txt";
         public string Name { get; set; }
-        public string Password { get; set; }
-        public int Type { get; private set; } = 0;
+        private string Password { get; set; }
+        public int Type { get; set; } = 0;
 
         public User(string name, string password)
         {
