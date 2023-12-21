@@ -16,13 +16,14 @@ namespace PosterApp
 
         static void Main(string[] args)
         {
+            PosterOutput posterOutput = new PosterOutput();
             while (true)
             {
                 Console.WriteLine("Выберите действие: 1-войти в аккаунт; 2-зарегистрироваться; 3-посмотреть афишу; 0-выйти");
                 string choose = Console.ReadLine();
                 if (choose.Equals("3"))
                 {
-                    Poster poster = new Poster();
+                Poster poster = new Poster();
                 }
                 else if (choose.Equals("1"))
                 {
@@ -36,6 +37,7 @@ namespace PosterApp
                     if (user.Type == 1) // Если тип пользователя ==1 -> открывается афиша
                     {
                         string input = "";
+
                         while (!input.Equals("0"))
                         {
                             Poster poster = new Poster();
@@ -45,8 +47,7 @@ namespace PosterApp
 
                             if (!input.Equals("0") && int.TryParse(input, out int itemNumber) && itemNumber >= 1)
                             {
-                                PosterNum posterNum = new PosterNum();
-                                string posterString = posterNum.GetPosterNum(itemNumber);
+                                string posterString = posterOutput.GetPosterNum(itemNumber);
 
                                 if (posterString.Equals("0"))
                                 {
@@ -59,7 +60,8 @@ namespace PosterApp
                                     if (buyInput == "y" || buyInput == "у")
                                     {
                                         Console.WriteLine(Environment.NewLine);
-                                        user.BuyTicket(itemNumber, user);
+                                        Ticket ticket = new Ticket();
+                                        ticket.BuyTicket(itemNumber, user);
                                     }
                                 }
                             }
@@ -82,7 +84,12 @@ namespace PosterApp
                                 Console.WriteLine("Введите дату (в любом виде): ");
                                 string date = Console.ReadLine();
 
-                                AddPoster addPoster = new AddPoster(text, date, user.Name);
+                                AddPoster addPoster;
+
+                                if (text != "" && date != "")
+
+                                    addPoster = new AddPoster(text, date, user.Name);
+                                else Console.WriteLine("Вы не ввели текст афиши или дату!");
      
                             }
                             else if (help == 2) // Изменение
@@ -98,16 +105,22 @@ namespace PosterApp
                                 Console.WriteLine("Введите дату (в любом виде): ");
                                 string date = Console.ReadLine();
 
-                                try
+                                if (int.TryParse(num, out int itemNumber) && itemNumber >= 1 && text.Trim() != "" && date.Trim() != "")
                                 {
-                                    ChangePoster changePoster = new ChangePoster(text, date, user.Name, int.Parse(num));
 
-                                    Poster poster1 = new Poster();
-                                } 
-                                catch
-                                {
-                                    Console.WriteLine("Произошла ошибка при вводе! Проверьте правильность ввода и повторите попытку");
+                                    try
+                                    {
+                                        ChangePoster changePoster = new ChangePoster(text, date, user.Name, int.Parse(num));
+
+                                        Poster poster1 = new Poster();
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Произошла ошибка при вводе! Проверьте правильность ввода и повторите попытку");
+                                    }
                                 }
+                                else Console.WriteLine("Вы не ввели текст афиши или дату!");
+
 
                             }
                             else if (help == 3) // Просмотр
@@ -168,7 +181,3 @@ namespace PosterApp
     }
 }
 
-//    private const string Users = "users.txt";
-//    private const string PosterFile = "data.txt";
-//    private const string Tickets = "tickets.txt";
-//    private const string Changes = "changes.txt";

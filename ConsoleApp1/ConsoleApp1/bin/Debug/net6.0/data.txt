@@ -5,6 +5,12 @@
 Кремль Шамана в Концерте, Скоро
 Квест по центру Москвы, В эти выходные
 Новое событие , Завтра
-che-to, 123
+Text, Date
 Новая строка афиши, Новая дата афиши
 Какой-то текст, Какая-то дата
+NewText, NewDate
+New, Date
+NewText, NewDate
+NotNullText, NotNullDate
+text, date
+texttext, datedate
